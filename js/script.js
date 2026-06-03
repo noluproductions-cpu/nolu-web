@@ -4,6 +4,68 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 0. Load Site Settings & Contacts Dynamically
+    const loadSiteSettings = () => {
+        fetch('data/settings.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                const settings = jsonData.site_settings || {};
+                
+                // Contacts
+                if (settings.contacts) {
+                    const statusText = document.getElementById('nav-status-text');
+                    if (statusText) statusText.textContent = settings.contacts.status_badge;
+
+                    const emailLink = document.getElementById('contact-email-link');
+                    const emailText = document.getElementById('contact-email-text');
+                    if (emailLink) emailLink.href = `mailto:${settings.contacts.email}`;
+                    if (emailText) emailText.textContent = settings.contacts.email;
+
+                    const igLink = document.getElementById('contact-ig-link');
+                    const igText = document.getElementById('contact-ig-text');
+                    if (igLink) igLink.href = settings.contacts.instagram_url;
+                    if (igText) igText.textContent = settings.contacts.instagram;
+                }
+
+                // Hero
+                if (settings.hero) {
+                    const tagline = document.getElementById('hero-tagline');
+                    const titleLight = document.getElementById('hero-title-light');
+                    const titleColored = document.getElementById('hero-title-colored');
+                    const desc = document.getElementById('hero-desc');
+
+                    if (tagline) tagline.textContent = settings.hero.tagline;
+                    if (titleLight) titleLight.textContent = settings.hero.title_light;
+                    if (titleColored) titleColored.textContent = settings.hero.title_colored;
+                    if (desc) desc.textContent = settings.hero.description;
+                }
+
+                // About
+                if (settings.about) {
+                    const heading = document.getElementById('about-heading');
+                    const text1 = document.getElementById('about-text-1');
+                    const text2 = document.getElementById('about-text-2');
+                    
+                    const creator1Title = document.getElementById('creator-1-title');
+                    const creator1Name = document.getElementById('creator-1-name');
+                    const creator2Title = document.getElementById('creator-2-title');
+                    const creator2Name = document.getElementById('creator-2-name');
+
+                    if (heading) heading.textContent = settings.about.heading;
+                    if (text1) text1.innerHTML = settings.about.text1;
+                    if (text2) text2.innerHTML = settings.about.text2;
+
+                    if (creator1Title) creator1Title.textContent = settings.about.creator1_title;
+                    if (creator1Name) creator1Name.textContent = settings.about.creator1_name;
+                    if (creator2Title) creator2Title.textContent = settings.about.creator2_title;
+                    if (creator2Name) creator2Name.textContent = settings.about.creator2_name;
+                }
+            })
+            .catch(err => console.error('Chyba při načítání nastavení:', err));
+    };
+
+    loadSiteSettings();
+    
     // 1. Smooth Header Shrink on Scroll
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -224,16 +286,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modal-title').textContent = data.title;
         document.getElementById('modal-tag').textContent = data.tag;
         
-        document.getElementById('modal-stat-dur').textContent = data.duration;
-        document.getElementById('modal-stat-team').textContent = data.team;
-        document.getElementById('modal-stat-role').textContent = data.role;
+        // Dynamic access to grouped JSON fields
+        if (data.specs) {
+            document.getElementById('modal-stat-dur').textContent = data.specs.duration || '';
+            document.getElementById('modal-stat-team').textContent = data.specs.team || '';
+            document.getElementById('modal-stat-role').textContent = data.specs.role || '';
+        }
         
-        document.getElementById('modal-stat-met1').textContent = data.stats.metric1;
-        document.getElementById('modal-stat-val1').textContent = data.stats.val1;
-        document.getElementById('modal-stat-met2').textContent = data.stats.metric2;
-        document.getElementById('modal-stat-val2').textContent = data.stats.val2;
+        if (data.stats) {
+            document.getElementById('modal-stat-met1').textContent = data.stats.metric1 || '';
+            document.getElementById('modal-stat-val1').textContent = data.stats.val1 || '';
+            document.getElementById('modal-stat-met2').textContent = data.stats.metric2 || '';
+            document.getElementById('modal-stat-val2').textContent = data.stats.val2 || '';
+        }
 
-        document.getElementById('modal-desc').textContent = data.desc;
+        if (data.content) {
+            document.getElementById('modal-desc').textContent = data.content.desc || '';
+        }
         
         // Populate deliverables bullet list
         const bulletsContainer = document.getElementById('modal-bullets');
@@ -241,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.deliverables && Array.isArray(data.deliverables)) {
             data.deliverables.forEach(bullet => {
                 const li = document.createElement('li');
-                li.textContent = bullet;
+                li.textContent = bullet.item || bullet; // support list widget field format
                 bulletsContainer.appendChild(li);
             });
         }
@@ -249,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Set player cover image
         const playerBg = document.getElementById('mock-player-img');
         if (playerBg) {
-            playerBg.src = data.image || 'GRAFIKA/LOGA/PNG/logo4.png';
+            playerBg.src = (data.content && data.content.image) ? data.content.image : 'GRAFIKA/LOGA/PNG/logo4.png';
         }
 
         // Show modal
@@ -273,6 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 list.forEach((proj, index) => {
                     projectsData[proj.id] = proj;
 
+                    const durationText = proj.specs ? proj.specs.duration : '';
+                    const cardDescText = proj.content ? proj.content.card_desc : '';
+
                     // Create project card element
                     const card = document.createElement('div');
                     card.className = `project-card glass-card-tilt reveal reveal-delay-${(index % 3) + 1} active`;
@@ -281,10 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="project-content">
                             <div class="project-meta">
                                 <span class="project-tag">${proj.tag}</span>
-                                <span class="project-duration">${proj.duration}</span>
+                                <span class="project-duration">${durationText}</span>
                             </div>
                             <h3 class="project-title">${proj.title}</h3>
-                            <p class="project-description">${proj.card_desc}</p>
+                            <p class="project-description">${cardDescText}</p>
                             <button class="project-btn" data-project-id="${proj.id}">Zobrazit detaily</button>
                         </div>
                     `;
@@ -359,66 +431,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 7. Tech Gear Spec Toast System
-    const techSpecs = {
-        'Canon EOS RP': {
-            icon: '📷',
-            title: 'Canon EOS RP',
-            desc: '26.2 MP Full-Frame bezzrcadlovka. Používáme ji s prémiovými objektivy pro cinematic hloubku ostrosti, vynikající výkon za špatného světla a čistý výstup.'
-        },
-        'DJI RS4': {
-            icon: '🎬',
-            title: 'DJI RS4 Stabilizátor',
-            desc: 'Nejnovější tříosý stabilizátor řady DJI. Umožňuje nám natáčet extrémně dynamické akční záběry, běhy a plynulé průlety s plnou kontrolou ostření.'
-        },
-        'DJI MIC 2': {
-            icon: '🎙️',
-            title: 'DJI MIC 2 (Bezdrátový zvuk)',
-            desc: 'Špičkové mikrofony se záznamem do 32-bit float a aktivním potlačením okolního hluku. Zajišťují dokonale čistý zvuk rozhovorů i ve větrném venkovním prostředí.'
-        },
-        'iPhone 16 & Pro': {
-            icon: '📱',
-            title: 'iPhone 16 & Pro',
-            desc: 'Vybavení pro ultra-rychlý střih a natáčení ve 4K/120fps. Nepostradatelný nástroj pro okamžitou tvorbu Reels a trendů přímo na místě činu.'
-        },
-        'RGB Světla': {
-            icon: '💡',
-            title: 'Kreativní RGB Osvětlení',
-            desc: 'Přenosná i studiová LED světla s plným spektrem barev. Pomáhají nám okamžitě přetvořit nudný interiér v atraktivní, barevně nasvícenou scénu.'
-        }
-    };
-
-    const techItems = document.querySelectorAll('.tech-item');
+    const techGrid = document.getElementById('tech-grid');
     const toast = document.getElementById('tech-toast');
     let toastTimeout = null;
 
-    techItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const name = item.querySelector('.tech-name').textContent.trim();
-            const spec = techSpecs[name];
-            if (!spec) return;
+    const showTechToast = (icon, title, descText) => {
+        if (toastTimeout) clearTimeout(toastTimeout);
 
-            // Clear previous timeout
-            if (toastTimeout) clearTimeout(toastTimeout);
+        document.getElementById('toast-icon').textContent = icon;
+        document.getElementById('toast-title').textContent = title;
+        document.getElementById('toast-body').textContent = descText;
 
-            // Populate Toast
-            document.getElementById('toast-icon').textContent = spec.icon;
-            document.getElementById('toast-title').textContent = spec.title;
-            document.getElementById('toast-body').textContent = spec.desc;
+        toast.classList.add('active');
 
-            // Activate Toast
-            toast.classList.add('active');
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('active');
+        }, 5500);
+    };
 
-            // Deactivate after 5 seconds
-            toastTimeout = setTimeout(() => {
-                toast.classList.remove('active');
-            }, 5500);
+    if (toast) {
+        toast.addEventListener('click', () => {
+            toast.classList.remove('active');
         });
-    });
+    }
 
-    // Close toast clicking on it
-    toast.addEventListener('click', () => {
-        toast.classList.remove('active');
-    });
+    if (techGrid) {
+        fetch('data/tech.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                const list = jsonData.tech_list || [];
+                techGrid.innerHTML = '';
+
+                list.forEach((tech, index) => {
+                    const item = document.createElement('div');
+                    item.className = `tech-item reveal reveal-delay-${(index % 3) + 1} active`;
+                    
+                    item.innerHTML = `
+                        <span class="tech-icon">${tech.icon}</span>
+                        <h4 class="tech-name">${tech.name}</h4>
+                        <p class="tech-desc">${tech.category}</p>
+                    `;
+
+                    item.addEventListener('click', () => {
+                        showTechToast(tech.icon, tech.name, tech.desc);
+                    });
+
+                    techGrid.appendChild(item);
+                });
+            })
+            .catch(err => console.error('Chyba při načítání techniky:', err));
+    }
 
     // 8. Interactive Form Submission
     const contactForm = document.getElementById('contact-form');

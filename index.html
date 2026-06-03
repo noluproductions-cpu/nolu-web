@@ -59,7 +59,7 @@
         <div class="nav-actions">
             <div class="status-badge">
                 <span class="status-dot"></span>
-                Social & Content Studio
+                <span id="nav-status-text">Social & Content Studio</span>
             </div>
         </div>
     </header>
@@ -73,12 +73,12 @@
             <div class="hero-logo-wrapper">
                 <img src="GRAFIKA/LOGA/PNG/logo4.png" alt="Nolu Logo" class="hero-logo">
             </div>
-            <span class="tagline">Next-Gen Creative Studio</span>
+            <span class="tagline" id="hero-tagline">Next-Gen Creative Studio</span>
             <h1>
-                <span class="light">Tvoříme moderní obsah, který</span><br>
-                <span class="colored">propojuje značky s lidmi</span>
+                <span class="light" id="hero-title-light">Tvoříme moderní obsah, který</span><br>
+                <span class="colored" id="hero-title-colored">propojuje značky s lidmi</span>
             </h1>
-            <p class="description">
+            <p class="description" id="hero-desc">
                 Video-first content &bull; Social media strategy &bull; Branding. Spojujeme inovativní technologie s fresh pohledem mladé generace.
             </p>
             <div class="hero-cta">
@@ -96,22 +96,22 @@
         <div class="about-grid">
             <div class="about-content">
                 <span class="section-subtitle">Kdo jsme</span>
-                <h2 class="about-heading">Kreativní duo spojující technologie a moderní tvorbu obsahu</h2>
-                <p class="about-text">
+                <h2 class="about-heading" id="about-heading">Kreativní duo spojující technologie a moderní tvorbu obsahu</h2>
+                <p class="about-text" id="about-text-1">
                     Náš přístup spojuje technické znalosti s vášní pro vizuální storytelling. Specializujeme se na <strong>video-first obsah pro sociální sítě</strong>, od prvotního konceptu až po finální distribuci.
                 </p>
-                <p class="about-text">
+                <p class="about-text" id="about-text-2">
                     Věříme, že kvalitní a dynamický obsah dokáže budovat autentická spojení mezi značkami a jejich publikem. Přinášíme flexibilitu, rychlost a odvahu experimentovat s aktuálními trendy.
                 </p>
                 
                 <div class="creators">
                     <div class="creator-badge">
-                        <div class="creator-title">Founder / Creative</div>
-                        <div class="creator-name">Teodor Novák</div>
+                        <div class="creator-title" id="creator-1-title">Founder / Creative</div>
+                        <div class="creator-name" id="creator-1-name">Teodor Novák</div>
                     </div>
                     <div class="creator-badge">
-                        <div class="creator-title">Founder / Creative</div>
-                        <div class="creator-name">Lukáš Kebrdle</div>
+                        <div class="creator-title" id="creator-2-title">Founder / Creative</div>
+                        <div class="creator-name" id="creator-2-name">Lukáš Kebrdle</div>
                     </div>
                 </div>
             </div>
@@ -207,32 +207,8 @@
                 </p>
             </div>
 
-            <div class="tech-grid">
-                <div class="tech-item reveal reveal-delay-1">
-                    <span class="tech-icon">📷</span>
-                    <h4 class="tech-name">Canon EOS RP</h4>
-                    <p class="tech-desc">Fullframe kamera pro ostrý filmový vzhled</p>
-                </div>
-                <div class="tech-item reveal reveal-delay-2">
-                    <span class="tech-icon">🎬</span>
-                    <h4 class="tech-name">DJI RS4</h4>
-                    <p class="tech-desc">Profesionální stabilizátor pro plynulé záběry</p>
-                </div>
-                <div class="tech-item reveal reveal-delay-3">
-                    <span class="tech-icon">🎙️</span>
-                    <h4 class="tech-name">DJI MIC 2</h4>
-                    <p class="tech-desc">Špičkový bezdrátový zvuk bez rušení</p>
-                </div>
-                <div class="tech-item reveal reveal-delay-2">
-                    <span class="tech-icon">📱</span>
-                    <h4 class="tech-name">iPhone 16 & Pro</h4>
-                    <p class="tech-desc">Pro ultra-rychlou tvorbu a real-time trendy</p>
-                </div>
-                <div class="tech-item reveal reveal-delay-1">
-                    <span class="tech-icon">💡</span>
-                    <h4 class="tech-name">RGB Světla</h4>
-                    <p class="tech-desc">Kreativní nasvícení scén pro jedinečnou atmosféru</p>
-                </div>
+            <div class="tech-grid" id="tech-grid">
+                <!-- Technika se načítá dynamicky z data/tech.json -->
             </div>
         </div>
     </section>
@@ -312,16 +288,16 @@
 
                 <!-- Right: Quick Contacts & Secondary CTA -->
                 <div class="contact-card-container reveal reveal-delay-2">
-                    <a href="mailto:noluproductions@gmail.com" class="contact-card">
+                    <a href="mailto:noluproductions@gmail.com" class="contact-card" id="contact-email-link">
                         <span class="contact-icon">✉</span>
                         <span class="contact-label">Napište nám e-mail</span>
-                        <span class="contact-value">noluproductions@gmail.com</span>
+                        <span class="contact-value" id="contact-email-text">noluproductions@gmail.com</span>
                     </a>
                     
-                    <a href="https://www.instagram.com/nolu.productions/" target="_blank" class="contact-card">
+                    <a href="https://www.instagram.com/nolu.productions/" target="_blank" class="contact-card" id="contact-ig-link">
                         <span class="contact-icon">📸</span>
                         <span class="contact-label">Sledujte nás na Instagramu</span>
-                        <span class="contact-value">@nolu.productions</span>
+                        <span class="contact-value" id="contact-ig-text">@nolu.productions</span>
                     </a>
 
                     <div style="margin-top: 1rem; width: 100%;">

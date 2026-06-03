@@ -4,12 +4,16 @@
       "id": "vos-spse",
       "title": "VOŠ a SPŠE Plzeň",
       "tag": "Správa sociálních sítí",
-      "duration": "> 1.5 roku",
-      "team": "6 členů (mediální tým)",
-      "role": "Kompletní kreativní a PR vedení",
-      "card_desc": "Dlouhodobě spravujeme oficiální kanály školy (Instagram a Facebook). Vytváříme dynamické Reels, příspěvky, stories a podcasty. Vedeme 6členný mediální tým s plnou kreativní svobodou.",
-      "desc": "Dlouhodobá, komplexní správa oficiálních komunikačních kanálů jedné z největších technických škol v Plzeňském kraji. Zde zajišťujeme kompletní obsahový kalendář, videoprodukci Reels/TikToks, grafický design, rozhovory a podcasty.",
-      "image": "GRAFIKA/LOGA/PNG/logo4.png",
+      "specs": {
+        "duration": "> 1.5 roku",
+        "team": "6 členů (mediální tým)",
+        "role": "Kompletní kreativní a PR vedení"
+      },
+      "content": {
+        "card_desc": "Dlouhodobě spravujeme oficiální kanály školy (Instagram a Facebook). Vytváříme dynamické Reels, příspěvky, stories a podcasty. Vedeme 6členný mediální tým s plnou kreativní svobodou.",
+        "desc": "Dlouhodobá, komplexní správa oficiálních komunikačních kanálů jedné z největších technických škol v Plzeňském kraji. Zde zajišťujeme kompletní obsahový kalendář, videoprodukci Reels/TikToks, grafický design, rozhovory a podcasty.",
+        "image": "GRAFIKA/LOGA/PNG/logo4.png"
+      },
       "deliverables": [
         "Správa Instagram & Facebook profilů",
         "Tvorba krátkých dynamických Reels a TikTok videí",
@@ -28,12 +32,16 @@
       "id": "robovehicle",
       "title": "RoboVehicle 2025",
       "tag": "Full Media Coverage",
-      "duration": "5 dní",
-      "team": "2 kreativci",
-      "role": "Real-time Content & Cinematic Recap",
-      "card_desc": "Kompletní real-time content a mediální pokrytí mezinárodní technické soutěže s týmy z Německa, Číny, Slovenska a Turecka. Zahrnovalo rozhovory, cinematic video produkci a denní recap videa.",
-      "desc": "Kompletní mediální zajištění pětidenní prestižní mezinárodní technické soutěže. Zajišťovali jsme okamžitou dokumentaci a střih pro sociální sítě s týmy z Německa, Číny, Slovenska a Turecka přímo v reálném čase.",
-      "image": "GRAFIKA/LOGA/PNG/logo5.png",
+      "specs": {
+        "duration": "5 dní",
+        "team": "2 kreativci",
+        "role": "Real-time Content & Cinematic Recap"
+      },
+      "content": {
+        "card_desc": "Kompletní real-time content a mediální pokrytí mezinárodní technické soutěže s týmy z Německa, Číny, Slovenska a Turecka. Zahrnovalo rozhovory, cinematic video produkci a denní recap videa.",
+        "desc": "Kompletní mediální zajištění pětidenní prestižní mezinárodní technické soutěže. Zajišťovali jsme okamžitou dokumentaci a střih pro sociální sítě s týmy z Německa, Číny, Slovenska a Turecka přímo v reálném čase.",
+        "image": "GRAFIKA/LOGA/PNG/logo5.png"
+      },
       "deliverables": [
         "Real-time Instagram Stories & Storytelling",
         "Denní video shrnutí (Daily Recap) do 12 hodin",
@@ -52,12 +60,16 @@
       "id": "culture-coworking",
       "title": "Culture Coworking",
       "tag": "Zahraniční spolupráce",
-      "duration": "Kampaň",
-      "team": "2 konzultanti",
-      "role": "Strategie digitální komunikace",
-      "card_desc": "Spolupráce se špičkovým Co-Workingem v Irsku zaměřená na modernizaci digitální prezentace: definice content pilířů, správa sociálních sítí, tvorba obsahu pro podnikatele a zvýšení vizuální konzistence.",
-      "desc": "Konzultační a tvůrčí spolupráce s prémiovým irským Co-Workingovým centrem. Cílem projektu bylo zanalyzovat irský trh malých podnikatelů a navrhnout novou obsahovou strategii, která zvýší počet rezervací.",
-      "image": "GRAFIKA/LOGA/PNG/logo4.png",
+      "specs": {
+        "duration": "Kampaň",
+        "team": "2 konzultanti",
+        "role": "Strategie digitální komunikace"
+      },
+      "content": {
+        "card_desc": "Spolupráce se špičkovým Co-Workingem v Irsku zaměřená na modernizaci digitální prezentace: definice content pilířů, správa sociálních sítí, tvorba obsahu pro podnikatele a zvýšení vizuální konzistence.",
+        "desc": "Konzultační a tvůrčí spolupráce s prémiovým irským Co-Workingovým centrem. Cílem projektu bylo zanalyzovat irský trh malých podnikatelů a navrhnout novou obsahovou strategii, která zvýší počet rezervací.",
+        "image": "GRAFIKA/LOGA/PNG/logo4.png"
+      },
       "deliverables": [
         "Definice strategických obsahových pilířů",
         "Tvorba měsíčního publikačního kalendáře a scénářů",
