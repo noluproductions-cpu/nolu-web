@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: noluproductions-cpu/nolu-web
+  branch: main
+  commit_messages:
+    create: 'CMS: Vytvořen nový projekt'
+    update: 'CMS: Aktualizován seznam projektů'
+    delete: 'CMS: Smazán projekt'
+
+media_folder: "GRAFIKA/LOGA/PNG"
+public_folder: "GRAFIKA/LOGA/PNG"
+
+# Povolí lokální proxy pro vývoj (přes npx @sveltia/cms-proxy)
+local_backend: true
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio"
+    files:
+      - file: "data/projects.json"
+        label: "Projekty"
+        name: "projects"
+        fields:
+          - name: "projects_list"
+            label: "Seznam projektů v portfoliu"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Unikátní ID (slug, např: muj-projekt)", name: "id", widget: "string" }
+              - { label: "Název projektu", name: "title", widget: "string" }
+              - { label: "Kategorie / Tag (např. Správa sociálních sítí)", name: "tag", widget: "string" }
+              - { label: "Doba trvání", name: "duration", widget: "string" }
+              - { label: "Náš tým (např. 2 kreativci)", name: "team", widget: "string" }
+              - { label: "Naše role (např. Full Media Coverage)", name: "role", widget: "string" }
+              - { label: "Krátký popis (pro kartu v mřížce)", name: "card_desc", widget: "text" }
+              - { label: "Detailní popis (pro vyskakovací okno)", name: "desc", widget: "text" }
+              - { label: "Náhledový obrázek / logo (vyberte ze složky)", name: "image", widget: "image" }
+              - name: "deliverables"
+                label: "Klíčové dodané výstupy"
+                widget: "list"
+                field: { label: "Výstup (jeden řádek)", name: "item", widget: "string" }
+              - name: "stats"
+                label: "Statistiky / Výsledky"
+                widget: "object"
+                fields:
+                  - { label: "Statistika 1 - Název (např. Růst dosahu)", name: "metric1", widget: "string" }
+                  - { label: "Statistika 1 - Hodnota (např. +150%)", name: "val1", widget: "string" }
+                  - { label: "Statistika 2 - Název", name: "metric2", widget: "string" }
+                  - { label: "Statistika 2 - Hodnota", name: "val2", widget: "string" }

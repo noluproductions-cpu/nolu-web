@@ -43,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. 3D Parallax Tilt Effect for Cards
-    const tiltCards = document.querySelectorAll('.glass-card-tilt');
-    tiltCards.forEach(card => {
+    const initTiltEffect = (card) => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -65,6 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
             card.style.boxShadow = '';
         });
+    };
+
+    const tiltCards = document.querySelectorAll('.glass-card-tilt');
+    tiltCards.forEach(card => {
+        if (!card.closest('.projects-grid')) {
+            initTiltEffect(card);
+        }
     });
 
     // 5. Interactive Canvas Particles Background for Hero
@@ -204,78 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. Dynamic Project Showcase Modal System
-    const projectsData = {
-        'vos-spse': {
-            title: 'VOŠ a SPŠE Plzeň',
-            tag: 'Správa sociálních sítí',
-            duration: '> 1.5 roku',
-            team: '6 členů (mediální tým)',
-            role: 'Kompletní kreativní a PR vedení',
-            desc: 'Dlouhodobá, komplexní správa oficiálních komunikačních kanálů jedné z největších technických škol v Plzeňském kraji. Zde zajišťujeme kompletní obsahový kalendář, videoprodukci Reels/TikToks, grafický design, rozhovory a podcasty.',
-            deliverables: [
-                'Správa Instagram & Facebook profilů',
-                'Tvorba krátkých dynamických Reels a TikTok videí',
-                'Vedení a mentoring 6členného studentského týmu',
-                'Nahrávání a postprodukce školního podcastu',
-                'Zajištění vizuální konzistence PR kampaní'
-            ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
-            stats: {
-                metric1: 'Stabilní růst dosahu',
-                val1: '+150%',
-                metric2: 'Vytvořených Reels',
-                val2: '120+'
-            }
-        },
-        'robovehicle': {
-            title: 'RoboVehicle 2025',
-            tag: 'Full Media Coverage',
-            duration: '5 dní',
-            team: '2 kreativci',
-            role: 'Real-time Content & Cinematic Recap',
-            desc: 'Kompletní mediální zajištění pětidenní prestižní mezinárodní technické soutěže. Zajišťovali jsme okamžitou dokumentaci a střih pro sociální sítě s týmy z Německa, Číny, Slovenska a Turecka přímo v reálném čase.',
-            deliverables: [
-                'Real-time Instagram Stories & Storytelling',
-                'Denní video shrnutí (Daily Recap) do 12 hodin',
-                'Cinematic video produkce a rozhovory se soutěžícími',
-                'Profesionální fotodokumentace klíčových disciplín',
-                'Závěrečné oficiální Promo Video akce'
-            ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
-            stats: {
-                metric1: 'Rychlost střihu',
-                val1: '< 4 hod',
-                metric2: 'Celkový dosah',
-                val2: '35K+'
-            }
-        },
-        'culture-coworking': {
-            title: 'Culture Coworking',
-            tag: 'Zahraniční spolupráce',
-            duration: '1 měsíc',
-            team: '2 konzultanti',
-            role: 'Strategie digitální komunikace',
-            desc: 'Konzultační a tvůrčí spolupráce s prémiovým irským Co-Workingovým centrem. Cílem projektu bylo zanalyzovat irský trh malých podnikatelů a navrhnout novou obsahovou strategii, která zvýší počet rezervací.',
-            deliverables: [
-                'Definice strategických obsahových pilířů',
-                'Tvorba měsíčního publikačního kalendáře a scénářů',
-                'Konkurenční analýza lokálního trhu v Irsku',
-                'Audit dosavadních sociálních sítí (IG, LinkedIn)',
-                'Návrh nového grafického manuálu a vizuálních šablon'
-            ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
-            stats: {
-                metric1: 'Míra zapojení (ER)',
-                val1: '+45%',
-                metric2: 'Podnikatelé osloveni',
-                val2: '5000+'
-            }
-        }
-    };
+    let projectsData = {};
 
+    const projectsGrid = document.getElementById('projects-grid');
     const modal = document.getElementById('project-modal');
     const modalClose = document.getElementById('modal-close');
-    const modalTriggers = document.querySelectorAll('[data-project-id]');
 
     const openModal = (projectId) => {
         const data = projectsData[projectId];
@@ -299,20 +238,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Populate deliverables bullet list
         const bulletsContainer = document.getElementById('modal-bullets');
         bulletsContainer.innerHTML = '';
-        data.deliverables.forEach(bullet => {
-            const li = document.createElement('li');
-            li.textContent = bullet;
-            bulletsContainer.appendChild(li);
-        });
+        if (data.deliverables && Array.isArray(data.deliverables)) {
+            data.deliverables.forEach(bullet => {
+                const li = document.createElement('li');
+                li.textContent = bullet;
+                bulletsContainer.appendChild(li);
+            });
+        }
 
         // Set player cover image
         const playerBg = document.getElementById('mock-player-img');
-        if (projectId === 'vos-spse') {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo4.png';
-        } else if (projectId === 'robovehicle') {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo5.png';
-        } else {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo4.png';
+        if (playerBg) {
+            playerBg.src = data.image || 'GRAFIKA/LOGA/PNG/logo4.png';
         }
 
         // Show modal
@@ -325,13 +262,53 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     };
 
-    modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectId = trigger.getAttribute('data-project-id');
-            openModal(projectId);
-        });
-    });
+    // Load projects dynamically from JSON
+    if (projectsGrid) {
+        fetch('data/projects.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                const list = jsonData.projects_list || [];
+                projectsGrid.innerHTML = ''; // Clear fallback/loading text
+
+                list.forEach((proj, index) => {
+                    projectsData[proj.id] = proj;
+
+                    // Create project card element
+                    const card = document.createElement('div');
+                    card.className = `project-card glass-card-tilt reveal reveal-delay-${(index % 3) + 1} active`;
+                    
+                    card.innerHTML = `
+                        <div class="project-content">
+                            <div class="project-meta">
+                                <span class="project-tag">${proj.tag}</span>
+                                <span class="project-duration">${proj.duration}</span>
+                            </div>
+                            <h3 class="project-title">${proj.title}</h3>
+                            <p class="project-description">${proj.card_desc}</p>
+                            <button class="project-btn" data-project-id="${proj.id}">Zobrazit detaily</button>
+                        </div>
+                    `;
+
+                    // Add click event for details button
+                    const btn = card.querySelector('.project-btn');
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openModal(proj.id);
+                    });
+
+                    projectsGrid.appendChild(card);
+                    
+                    // Bind the 3D Parallax Tilt Effect to this newly created card
+                    if (typeof initTiltEffect === 'function') {
+                        initTiltEffect(card);
+                    }
+                });
+            })
+            .catch(err => {
+                console.error('Chyba při načítání projektů:', err);
+                projectsGrid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; width: 100%;">Nepodařilo se načíst projekty. Zkuste to prosím později.</p>';
+            });
+    }
 
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
