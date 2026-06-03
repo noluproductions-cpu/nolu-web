@@ -467,15 +467,37 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = 'Odesílám...';
             submitBtn.disabled = true;
 
-            // Simulate server request
-            setTimeout(() => {
-                showFormStatus('✓ Vaše zpráva byla úspěšně odeslána! Ozveme se Vám co nejdříve.', 'success');
-                contactForm.reset();
-                
+            // Send actual request to Formsubmit
+            fetch("https://formsubmit.co/ajax/noluproductions@gmail.com", {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    Name: name,
+                    Email: email,
+                    Message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success === "true" || data.success === true) {
+                    showFormStatus('✓ Vaše zpráva byla úspěšně odeslána! Ozveme se Vám co nejdříve.', 'success');
+                    contactForm.reset();
+                } else {
+                    showFormStatus('Něco se nepovedlo. Zkuste to prosím znovu nebo nám napište přímo na e-mail.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error("Chyba při odesílání:", error);
+                showFormStatus('Chyba sítě. Zkuste to prosím znovu nebo nám napište přímo na e-mail.', 'error');
+            })
+            .finally(() => {
                 // Reset button
                 submitBtn.textContent = originalBtnText;
                 submitBtn.disabled = false;
-            }, 1800);
+            });
         });
     }
 
