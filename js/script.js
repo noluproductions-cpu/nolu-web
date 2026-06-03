@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             // Send actual request to Formsubmit
-            fetch("https://formsubmit.co/ajax/noluproductions@gmail.com", {
+            fetch("https://formsubmit.co/ajax/213f38458f292c278a7901cecb011680", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
@@ -484,6 +484,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success === "true" || data.success === true) {
                     showFormStatus('✓ Vaše zpráva byla úspěšně odeslána! Ozveme se Vám co nejdříve.', 'success');
+                    contactForm.reset();
+                } else if (data.message && data.message.includes('Activation')) {
+                    showFormStatus('✓ Odesláno! Zkontrolujte prosím e-mail noluproductions@gmail.com pro aktivaci formuláře.', 'success');
                     contactForm.reset();
                 } else {
                     showFormStatus('Něco se nepovedlo. Zkuste to prosím znovu nebo nám napište přímo na e-mail.', 'error');
