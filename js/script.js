@@ -14,6 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 1b. Mobile Navigation Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            header.classList.toggle('nav-open');
+        });
+        
+        // Close menu when clicking navigation links
+        const navLinks = header.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('nav-open');
+            });
+        });
+    }
+
     // 2. Interactive Spotlight Gradient Following Mouse Cursor
     const spotlight = document.getElementById('spotlight');
     document.addEventListener('mousemove', (e) => {
