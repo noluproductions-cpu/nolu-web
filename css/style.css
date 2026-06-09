@@ -171,6 +171,7 @@ header.scrolled {
     display: flex;
     align-items: center;
     text-decoration: none;
+    flex: 1;
 }
 
 .logo-img {
@@ -222,7 +223,9 @@ nav a:hover::after {
 .nav-actions {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 1.5rem;
+    flex: 1;
 }
 
 .status-badge {
@@ -1387,6 +1390,10 @@ footer {
     
     .logo-img {
         height: 32px;
+    }
+    
+    .logo-container, .nav-actions {
+        flex: none;
     }
     
     .status-badge {
