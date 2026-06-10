@@ -319,22 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
             bulletsContainer.appendChild(li);
         });
 
-        // Set player cover image / toggle player visibility
-        const mockPlayer = document.getElementById('mock-player');
+        // Set global modal visual showcase title
         const visualTitle = document.querySelector('.modal-visual-showcase .modal-section-title');
-        
-        if (projectId === 'vos-spse') {
-            mockPlayer.style.display = 'block';
-            if (visualTitle) visualTitle.textContent = 'Ukázka výstupu';
-            
-            const playerBg = document.getElementById('mock-player-img');
-            playerBg.src = data.image;
-            playerBg.style.objectFit = 'contain';
-            playerBg.style.padding = '2.5rem';
-            playerBg.style.backgroundColor = '#0b0912'; // match card background
-        } else {
-            mockPlayer.style.display = 'none';
-            if (visualTitle) visualTitle.textContent = 'Klíčové výsledky';
+        if (visualTitle) {
+            visualTitle.textContent = 'Klíčové výsledky';
         }
 
         // Show modal
@@ -369,39 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Simulated Video Player Play Trigger
-    const mockPlayer = document.getElementById('mock-player');
-    const playerProgress = document.getElementById('player-progress');
-    const playerTime = document.getElementById('player-time');
-    let playingInterval = null;
 
-    mockPlayer.addEventListener('click', () => {
-        const iconBtn = mockPlayer.querySelector('.play-trigger-btn svg');
-        const isPlaying = mockPlayer.getAttribute('data-playing') === 'true';
-
-        if (!isPlaying) {
-            // Play
-            mockPlayer.setAttribute('data-playing', 'true');
-            iconBtn.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
-            
-            let percent = 35;
-            let sec = 42;
-            playingInterval = setInterval(() => {
-                percent += 0.5;
-                if (percent >= 100) percent = 0;
-                playerProgress.style.width = `${percent}%`;
-                
-                sec += 1;
-                if (sec >= 60) sec = 0;
-                playerTime.textContent = `01:${sec < 10 ? '0' + sec : sec} / 03:12`;
-            }, 1000);
-        } else {
-            // Pause
-            mockPlayer.setAttribute('data-playing', 'false');
-            iconBtn.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
-            clearInterval(playingInterval);
-        }
-    });
 
     // 7. Tech Gear Spec Toast System
     const techSpecs = {
