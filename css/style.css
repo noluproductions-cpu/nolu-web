@@ -346,13 +346,49 @@ h1 span.colored {
     -webkit-text-fill-color: transparent;
 }
 
+.hero-tags-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.hero-tag-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.45rem 1.15rem;
+    border-radius: 99px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.hero-tag-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(217, 70, 239, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(217, 70, 239, 0.1);
+}
+
+.tag-icon {
+    font-size: 0.95rem;
+}
+
 .description {
     font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     color: var(--text-secondary);
     max-width: 680px;
     line-height: 1.6;
     font-weight: 300;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .hero-cta {
