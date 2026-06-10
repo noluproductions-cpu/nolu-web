@@ -229,11 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
             role: 'Kompletní správa sociálních sítí a tvorba obsahu',
             desc: 'Dlouhodobě zajišťujeme správu Instagramu školy VOŠ a SPŠE Plzeň. Podílíme se na plánování obsahu, tvorbě Reels a videí, fotografování školních akcí, produkci podcastů a vedení studentského mediálního týmu.',
             deliverables: [
-                'Správa Instagram & Facebook profilů',
-                'Tvorba krátkých dynamických Reels a TikTok videí',
+                'Správa Instagramu',
+                'Tvorba krátkých dynamických Reels',
                 'Vedení a mentoring 6členného studentského týmu',
-                'Nahrávání a postprodukce školního podcastu',
-                'Zajištění vizuální konzistence PR kampaní'
+                'Nahrávání a postprodukce školního podcastu'
             ],
             image: 'GRAFIKA/LOGA/PNG/logo4.png',
             stats: {
