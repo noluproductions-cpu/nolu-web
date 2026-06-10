@@ -253,8 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Real-time Instagram Stories & Storytelling',
                 'Denní video shrnutí (Daily Recap) do 12 hodin',
                 'Cinematic video produkce a rozhovory se soutěžícími',
-                'Profesionální fotodokumentace klíčových disciplín',
-                'Závěrečné oficiální Promo Video akce'
+                'Profesionální fotodokumentace klíčových disciplín'
             ],
             image: 'GRAFIKA/LOGA/PNG/logo5.png',
             stats: {
@@ -320,17 +319,22 @@ document.addEventListener('DOMContentLoaded', () => {
             bulletsContainer.appendChild(li);
         });
 
-        // Set player cover image
-        const playerBg = document.getElementById('mock-player-img');
-        playerBg.src = data.image;
+        // Set player cover image / toggle player visibility
+        const mockPlayer = document.getElementById('mock-player');
+        const visualTitle = document.querySelector('.modal-visual-showcase .modal-section-title');
+        
         if (projectId === 'vos-spse') {
+            mockPlayer.style.display = 'block';
+            if (visualTitle) visualTitle.textContent = 'Ukázka výstupu';
+            
+            const playerBg = document.getElementById('mock-player-img');
+            playerBg.src = data.image;
             playerBg.style.objectFit = 'contain';
             playerBg.style.padding = '2.5rem';
             playerBg.style.backgroundColor = '#0b0912'; // match card background
         } else {
-            playerBg.style.objectFit = 'cover';
-            playerBg.style.padding = '0';
-            playerBg.style.backgroundColor = '#000000';
+            mockPlayer.style.display = 'none';
+            if (visualTitle) visualTitle.textContent = 'Klíčové výsledky';
         }
 
         // Show modal
