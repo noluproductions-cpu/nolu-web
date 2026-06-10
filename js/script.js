@@ -226,8 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tag: 'Správa sociálních sítí',
             duration: '> 1.5 roku',
             team: '6 členů (mediální tým)',
-            role: 'Kompletní kreativní a PR vedení',
-            desc: 'Dlouhodobá, komplexní správa oficiálních komunikačních kanálů jedné z největších technických škol v Plzeňském kraji. Zde zajišťujeme kompletní obsahový kalendář, videoprodukci Reels/TikToks, grafický design, rozhovory a podcasty.',
+            role: 'Kompletní správa sociálních sítí a tvorba obsahu',
+            desc: 'Dlouhodobě zajišťujeme správu Instagramu školy VOŠ a SPŠE Plzeň. Podílíme se na plánování obsahu, tvorbě Reels a videí, fotografování školních akcí, produkci podcastů a vedení studentského mediálního týmu.',
             deliverables: [
                 'Správa Instagram & Facebook profilů',
                 'Tvorba krátkých dynamických Reels a TikTok videí',
