@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Vedení a mentoring 6členného studentského týmu',
                 'Nahrávání a postprodukce školního podcastu'
             ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
+            image: 'GRAFIKA/spse_logo.png',
             stats: {
                 metric1: 'Stabilní růst dosahu',
                 val1: '+150%',
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Profesionální fotodokumentace klíčových disciplín',
                 'Závěrečné oficiální Promo Video akce'
             ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
+            image: 'GRAFIKA/LOGA/PNG/logo5.png',
             stats: {
                 metric1: 'Rychlost střihu',
                 val1: '< 4 hod',
@@ -322,12 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set player cover image
         const playerBg = document.getElementById('mock-player-img');
+        playerBg.src = data.image;
         if (projectId === 'vos-spse') {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo4.png';
-        } else if (projectId === 'robovehicle') {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo5.png';
+            playerBg.style.objectFit = 'contain';
+            playerBg.style.padding = '2.5rem';
+            playerBg.style.backgroundColor = '#0b0912'; // match card background
         } else {
-            playerBg.src = 'GRAFIKA/LOGA/PNG/logo4.png';
+            playerBg.style.objectFit = 'cover';
+            playerBg.style.padding = '0';
+            playerBg.style.backgroundColor = '#000000';
         }
 
         // Show modal
