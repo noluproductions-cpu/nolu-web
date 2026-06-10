@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Cinematic video produkce a rozhovory se soutěžícími',
                 'Profesionální fotodokumentace klíčových disciplín'
             ],
-            image: 'GRAFIKA/LOGA/PNG/logo5.png',
+            image: 'GRAFIKA/LOGA/PNG/logo5-web.png',
             stats: {
                 metric1: 'Rychlost střihu',
                 val1: '< 4 hod',
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Audit dosavadních sociálních sítí (IG, LinkedIn)',
                 'Návrh nového grafického manuálu a vizuálních šablon'
             ],
-            image: 'GRAFIKA/LOGA/PNG/logo4.png',
+            image: 'GRAFIKA/LOGA/PNG/logo4-web.png',
             stats: {
                 metric1: 'Míra zapojení (ER)',
                 val1: '+45%',
