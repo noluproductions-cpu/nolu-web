@@ -31,9 +31,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- External CSS stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=2.8">
+    <link rel="stylesheet" href="css/style.css?v=2.9">
     <!-- External JS script -->
-    <script src="js/script.js?v=3.2" defer></script>
+    <script src="js/script.js?v=3.3" defer></script>
 </head>
 <body>
 
@@ -361,6 +361,9 @@
                             Odeslat nezávaznou poptávku
                         </button>
                         <div class="form-status" id="form-status">Status odeslání.</div>
+                        <p class="form-privacy-note">
+                            Odesláním formuláře berete na vědomí zpracování osobních údajů pro účely vyřízení vaší poptávky.
+                        </p>
                     </form>
                 </div>
 
@@ -453,14 +456,42 @@
 
     <!-- Footer -->
     <footer>
-        <img src="GRAFIKA/LOGA/PNG/logo5-web.png" alt="Nolu" class="footer-logo">
-        <p class="footer-text">&copy; 2026 NOLU Productions. Všechna práva vyhrazena.</p>
-        <div class="footer-links">
-            <a href="#hero">Domů</a>
-            <a href="#o-nas">O nás</a>
-            <a href="#sluzby">Služby</a>
-            <a href="#projekty">Projekty</a>
-            <a href="#kontakt">Kontakt</a>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <img src="GRAFIKA/LOGA/PNG/logo5-web.png" alt="Nolu" class="footer-logo">
+                    <p class="footer-text">&copy; 2026 NOLU Productions. Všechna práva vyhrazena.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Domů</a>
+                    <a href="#o-nas">O nás</a>
+                    <a href="#sluzby">Služby</a>
+                    <a href="#projekty">Projekty</a>
+                    <a href="#kontakt">Kontakt</a>
+                </div>
+            </div>
+
+            <!-- Identifikační a právní údaje společnosti (povinné údaje dle zákona) -->
+            <div class="footer-legal">
+                <div class="legal-grid">
+                    <div class="legal-col">
+                        <span class="legal-title">Fakturační & Identifikační údaje</span>
+                        <p class="legal-text">
+                            <strong>NOLU Productions s.r.o.</strong><br>
+                            Sídlo: Plzeň, Česká republika<br>
+                            IČO: <span id="legal-ico">[Doplnit IČO]</span> &bull; DIČ: <span id="legal-dic">[Doplnit DIČ]</span><br>
+                            Zapsáno v obchodním rejstříku vedeném Krajským soudem v Plzni
+                        </p>
+                    </div>
+                    <div class="legal-col">
+                        <span class="legal-title">Informace pro spotřebitele (ADR / ČOI)</span>
+                        <p class="legal-text">
+                            V případě vzniklého spotřebitelského sporu se spotřebitel může obrátit na subjekt mimosoudního řešení spotřebitelských sporů: <a href="https://www.adr.coi.cz" target="_blank" rel="noopener">Česká obchodní inspekce (www.adr.coi.cz)</a>.<br>
+                            Dozor nad dodržováním práv spotřebitelů vykonává <a href="https://www.coi.cz" target="_blank" rel="noopener">Česká obchodní inspekce (www.coi.cz)</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 

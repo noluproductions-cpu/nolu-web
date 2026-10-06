@@ -1242,39 +1242,118 @@ textarea.form-input {
 
 /* 15. Footer */
 footer {
-    padding: 3rem 4rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
-    text-align: center;
+    padding: 4rem 2rem 3rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(3, 2, 6, 0.85);
     z-index: 10;
     position: relative;
 }
 
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+}
+
 .footer-logo {
     height: 32px;
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .footer-text {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .footer-links {
     display: flex;
-    justify-content: center;
     gap: 2rem;
-    margin-top: 1.5rem;
 }
 
 .footer-links a {
     color: var(--text-secondary);
     text-decoration: none;
+    font-size: 0.9rem;
     transition: var(--transition-fast);
 }
 
 .footer-links a:hover {
     color: var(--text-primary);
+}
+
+/* Identifikační a právní údaje společnosti (ČOI / ADR / OR) */
+.footer-legal {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 2rem;
+}
+
+.legal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    text-align: left;
+}
+
+.legal-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.legal-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-secondary);
+}
+
+.legal-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+.legal-text strong {
+    color: var(--text-primary);
+}
+
+.legal-text a {
+    color: #cbd5e1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: var(--transition-fast);
+}
+
+.legal-text a:hover {
+    color: var(--accent-secondary);
+}
+
+/* Form Privacy Note */
+.form-privacy-note {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.85;
 }
 
 /* 16. Media Queries */
@@ -1548,7 +1627,23 @@ footer {
 
     /* Footer styling */
     footer {
-        padding: 2.5rem 1.25rem;
+        padding: 3rem 1.25rem 2rem 1.25rem;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-brand {
+        align-items: center;
+    }
+
+    .legal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
     }
 
     .footer-links {
