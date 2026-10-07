@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             // Send actual request to Formsubmit
-            fetch("https://formsubmit.co/ajax/info@noluproductions.cz", {
+            fetch("https://formsubmit.co/ajax/3913dcdbfbd86738eaf23a8cc85231d9", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
