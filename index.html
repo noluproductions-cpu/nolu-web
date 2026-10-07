@@ -31,9 +31,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- External CSS stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.1">
+    <link rel="stylesheet" href="css/style.css?v=3.2">
     <!-- External JS script -->
-    <script src="js/script.js?v=3.5" defer></script>
+    <script src="js/script.js?v=3.6" defer></script>
 </head>
 <body>
 
@@ -483,24 +483,50 @@
                 </div>
             </div>
 
-            <!-- Identifikační a právní údaje společnosti (povinné údaje dle zákona) -->
-            <div class="footer-legal">
+            <!-- Právní & fakturační karta v prémiovém glassmorphic designu -->
+            <div class="footer-legal-card">
                 <div class="legal-grid">
                     <div class="legal-col">
-                        <span class="legal-title">Fakturační & Identifikační údaje</span>
-                        <p class="legal-text">
-                            <strong>NOLU Productions s.r.o.</strong><br>
-                            Sídlo: Svatojirská 426/6, Újezd, 312 00 Plzeň<br>
-                            IČO: 30038367 &bull; Nejsme plátci DPH<br>
-                            Zapsáno v obchodním rejstříku vedeném Krajským soudem v Plzni
-                        </p>
+                        <div class="legal-header">
+                            <span class="legal-icon">🏢</span>
+                            <span class="legal-title">Fakturační & Identifikační údaje</span>
+                        </div>
+                        <div class="legal-content">
+                            <div class="legal-company-name">NOLU Productions s.r.o.</div>
+                            <div class="legal-row">
+                                <span class="legal-label">Sídlo:</span>
+                                <span>Svatojirská 426/6, Újezd, 312 00 Plzeň</span>
+                            </div>
+                            <div class="legal-row flex-row">
+                                <div><span class="legal-label">IČO:</span> 30038367</div>
+                                <span class="legal-tag">Nejsme plátci DPH</span>
+                            </div>
+                            <div class="legal-row legal-subtext">
+                                Zapsáno v obchodním rejstříku vedeném Krajským soudem v Plzni
+                            </div>
+                        </div>
                     </div>
+
                     <div class="legal-col">
-                        <span class="legal-title">Informace pro spotřebitele (ADR / ČOI)</span>
-                        <p class="legal-text">
-                            V případě vzniklého spotřebitelského sporu se spotřebitel může obrátit na subjekt mimosoudního řešení spotřebitelských sporů: <a href="https://www.adr.coi.cz" target="_blank" rel="noopener">Česká obchodní inspekce (www.adr.coi.cz)</a>.<br>
-                            Dozor nad dodržováním práv spotřebitelů vykonává <a href="https://www.coi.cz" target="_blank" rel="noopener">Česká obchodní inspekce (www.coi.cz)</a>.
-                        </p>
+                        <div class="legal-header">
+                            <span class="legal-icon">🛡️</span>
+                            <span class="legal-title">Informace pro spotřebitele (ADR / ČOI)</span>
+                        </div>
+                        <div class="legal-content">
+                            <p class="legal-desc">
+                                V případě vzniklého spotřebitelského sporu má spotřebitel právo na mimosoudní řešení sporu. Orgánem mimosoudního řešení a dozoru je Česká obchodní inspekce.
+                            </p>
+                            <div class="legal-buttons">
+                                <a href="https://www.adr.coi.cz" target="_blank" rel="noopener" class="legal-btn">
+                                    <span class="btn-dot"></span>
+                                    Mimosoudní řešení (ADR)
+                                </a>
+                                <a href="https://www.coi.cz" target="_blank" rel="noopener" class="legal-btn">
+                                    <span class="btn-dot"></span>
+                                    Česká obchodní inspekce
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
