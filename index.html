@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- External CSS stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.3">
+    <link rel="stylesheet" href="css/style.css?v=3.4">
     <!-- External JS script -->
     <script src="js/script.js?v=3.8" defer></script>
 </head>
@@ -469,66 +469,52 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <img src="GRAFIKA/LOGA/PNG/logo5-web.png" alt="Nolu" class="footer-logo">
-                    <p class="footer-text">&copy; 2026 NOLU Productions. Všechna práva vyhrazena.</p>
+            <div class="footer-grid">
+                <!-- Col 1: Brand -->
+                <div class="footer-col footer-col-brand">
+                    <img src="GRAFIKA/LOGA/PNG/logo5-web.png" alt="NOLU Productions" class="footer-logo">
+                    <p class="footer-brand-desc">Tvoříme vizuální obsah a webové stránky, které dávají smysl a přinášejí výsledky.</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#hero">Domů</a>
-                    <a href="#o-nas">O nás</a>
-                    <a href="#sluzby">Služby</a>
-                    <a href="#projekty">Projekty</a>
-                    <a href="#kontakt">Kontakt</a>
+
+                <!-- Col 2: Navigation -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Navigace</h4>
+                    <ul class="footer-col-links">
+                        <li><a href="#hero">Domů</a></li>
+                        <li><a href="#o-nas">O nás</a></li>
+                        <li><a href="#sluzby">Služby</a></li>
+                        <li><a href="#projekty">Portfolio</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Company / Invoice Info -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Fakturační údaje</h4>
+                    <div class="footer-legal-info">
+                        <p class="footer-company-name">NOLU Productions s.r.o.</p>
+                        <p><span class="footer-label">Sídlo:</span> Svatojirská 426/6, Újezd, 312 00 Plzeň</p>
+                        <p><span class="footer-label">IČO:</span> 30038367</p>
+                        <p class="footer-vat-status">Nejsme plátci DPH</p>
+                        <p class="footer-subtext">Zapsáno v OR vedeném Krajským soudem v Plzni</p>
+                    </div>
+                </div>
+
+                <!-- Col 4: Consumer & Legal Info -->
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Spotřebitelské informace</h4>
+                    <p class="footer-subtext">
+                        V případě mimosoudního řešení spotřebitelských sporů je orgánem dozoru Česká obchodní inspekce.
+                    </p>
+                    <ul class="footer-col-links footer-legal-links">
+                        <li><a href="https://www.adr.coi.cz" target="_blank" rel="noopener">Mimosoudní řešení sporu (ADR)</a></li>
+                        <li><a href="https://www.coi.cz" target="_blank" rel="noopener">Česká obchodní inspekce (ČOI)</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Právní & fakturační karta v prémiovém glassmorphic designu -->
-            <div class="footer-legal-card">
-                <div class="legal-grid">
-                    <div class="legal-col">
-                        <div class="legal-header">
-                            <span class="legal-icon">🏢</span>
-                            <span class="legal-title">Fakturační & Identifikační údaje</span>
-                        </div>
-                        <div class="legal-content">
-                            <div class="legal-company-name">NOLU Productions s.r.o.</div>
-                            <div class="legal-row">
-                                <span class="legal-label">Sídlo:</span>
-                                <span>Svatojirská 426/6, Újezd, 312 00 Plzeň</span>
-                            </div>
-                            <div class="legal-row flex-row">
-                                <div><span class="legal-label">IČO:</span> 30038367</div>
-                                <span class="legal-tag">Nejsme plátci DPH</span>
-                            </div>
-                            <div class="legal-row legal-subtext">
-                                Zapsáno v obchodním rejstříku vedeném Krajským soudem v Plzni
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="legal-col">
-                        <div class="legal-header">
-                            <span class="legal-icon">🛡️</span>
-                            <span class="legal-title">Informace pro spotřebitele (ADR / ČOI)</span>
-                        </div>
-                        <div class="legal-content">
-                            <p class="legal-desc">
-                                V případě vzniklého spotřebitelského sporu má spotřebitel právo na mimosoudní řešení sporu. Orgánem mimosoudního řešení a dozoru je Česká obchodní inspekce.
-                            </p>
-                            <div class="legal-buttons">
-                                <a href="https://www.adr.coi.cz" target="_blank" rel="noopener" class="legal-btn">
-                                    <span class="btn-dot"></span>
-                                    Mimosoudní řešení (ADR)
-                                </a>
-                                <a href="https://www.coi.cz" target="_blank" rel="noopener" class="legal-btn">
-                                    <span class="btn-dot"></span>
-                                    Česká obchodní inspekce
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 NOLU Productions s.r.o. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
