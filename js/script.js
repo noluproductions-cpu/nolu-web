@@ -284,9 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'DJI MIC 2 (Bezdrátový zvuk)',
             desc: 'Špičkové mikrofony se záznamem do 32-bit float a aktivním potlačením okolního hluku. Zajišťují dokonale čistý zvuk rozhovorů i ve větrném venkovním prostředí.'
         },
-        'iPhone 16 & Pro': {
+        'iPhone 16 Pro': {
             icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`,
-            title: 'iPhone 16 & Pro',
+            title: 'iPhone 16 Pro',
             desc: 'Vybavení pro ultra-rychlý střih a natáčení ve 4K/120fps. Nepostradatelný nástroj pro okamžitou tvorbu Reels a trendů přímo na místě činu.'
         },
         'RGB Světla': {
