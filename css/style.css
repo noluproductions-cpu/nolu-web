@@ -3,21 +3,21 @@
    ========================================================================== */
 
 :root {
-    --bg-color: #030206; /* Deep cosmic space black */
-    --card-bg: rgba(255, 255, 255, 0.015);
-    --card-border: rgba(168, 85, 247, 0.08); /* Glowing purple-tinged card borders */
+    --bg-color: #050409; /* Clean deep space black */
+    --card-bg: rgba(255, 255, 255, 0.018);
+    --card-border: rgba(255, 255, 255, 0.07); /* Subtle hairline card border */
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
-    --accent-primary: #8b5cf6; /* Matches logo royal violet */
-    --accent-secondary: #d946ef; /* Matches logo neon magenta */
-    --accent-tertiary: #f43f5e; /* Elegant glowing coral pink */
-    --accent-glow: rgba(139, 92, 246, 0.16);
+    --accent-primary: #8b5cf6; /* Royal violet */
+    --accent-secondary: #d946ef; /* Neon magenta */
+    --accent-tertiary: #f43f5e;
+    --accent-glow: rgba(139, 92, 246, 0.12);
     
     --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #d946ef 50%, #f43f5e 100%);
-    --gradient-dark: linear-gradient(180deg, #030206 0%, #0b0912 100%);
+    --gradient-dark: linear-gradient(180deg, #050409 0%, #0c0a14 100%);
     
-    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: all 0.25s ease;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
     
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -66,38 +66,30 @@ body {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+    opacity: 0.4;
 }
 
 .glow-sphere {
     position: absolute;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(140px);
     pointer-events: none;
-    mix-blend-mode: screen;
 }
 
 .glow-sphere-1 {
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     top: -200px;
     right: -100px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(5, 4, 9, 0) 70%);
-    animation: float-ambient 25s infinite alternate ease-in-out;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(5, 4, 9, 0) 70%);
 }
 
 .glow-sphere-2 {
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     bottom: -200px;
     left: -200px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(5, 4, 9, 0) 70%);
-    animation: float-ambient 30s infinite alternate-reverse ease-in-out;
-    animation-delay: -5s;
-}
-
-@keyframes float-ambient {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(120px, 80px) scale(1.15); }
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(5, 4, 9, 0) 70%);
 }
 
 /* Canvas overlay */
@@ -119,7 +111,7 @@ body {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    background: radial-gradient(circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.05), transparent 80%);
+    background: radial-gradient(circle 320px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.03), transparent 80%);
 }
 
 /* 2. Scroll Reveal System */
@@ -582,49 +574,47 @@ section {
 }
 
 .service-card {
-    background: var(--card-bg);
+    background: #0b0914;
     border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(217, 70, 239, 0.35); /* Neon pink/magenta glow */
-    box-shadow: 0 25px 50px rgba(139, 92, 246, 0.08), 0 0 30px rgba(217, 70, 239, 0.16);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .service-icon-box {
-    width: 60px;
-    height: 60px;
-    background: rgba(99, 102, 241, 0.08);
-    border: 1px solid rgba(99, 102, 241, 0.15);
-    border-radius: 16px;
+    width: 52px;
+    height: 52px;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     color: #c084fc;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
     transition: var(--transition-smooth);
 }
 
 .service-card:hover .service-icon-box {
-    background: var(--gradient-accent);
+    background: rgba(168, 85, 247, 0.18);
+    border-color: rgba(168, 85, 247, 0.35);
     color: #ffffff;
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    transform: translateY(-2px);
 }
 
 .service-title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.15rem;
 }
 
 .service-list {
@@ -635,18 +625,17 @@ section {
 }
 
 .service-list li {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.65rem;
 }
 
 .service-list li::before {
-    content: "▶"; /* Neon play button triangle bullet */
-    color: var(--accent-secondary);
-    font-size: 0.65rem;
-    filter: drop-shadow(0 0 5px var(--accent-secondary));
+    content: "•";
+    color: var(--accent-primary);
+    font-size: 1.1rem;
     margin-right: 0.15rem;
 }
 
@@ -654,33 +643,32 @@ section {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: 2.25rem;
 }
 
 .project-card {
-    background: var(--card-bg);
+    background: #0b0914;
     border: 1px solid var(--card-border);
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: var(--transition-smooth);
-    backdrop-filter: blur(10px);
     height: 100%;
     cursor: pointer;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(217, 70, 239, 0.35); /* Neon magenta glow */
-    box-shadow: 0 30px 60px rgba(139, 92, 246, 0.08), 0 0 30px rgba(217, 70, 239, 0.16);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .project-content {
-    padding: 2.5rem;
+    padding: 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.15rem;
     flex-grow: 1;
 }
 
@@ -692,14 +680,14 @@ section {
 
 .project-tag {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     background: rgba(168, 85, 247, 0.1);
     border: 1px solid rgba(168, 85, 247, 0.2);
     color: #d8b4fe;
-    padding: 0.4rem 1rem;
+    padding: 0.35rem 0.85rem;
     border-radius: 99px;
 }
 
@@ -710,21 +698,21 @@ section {
 
 .project-title {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #ffffff;
 }
 
 .project-description {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.6;
     margin-bottom: auto;
 }
 
 .project-btn {
     align-self: flex-start;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-primary);
     background: transparent;
     border: none;
@@ -734,7 +722,7 @@ section {
     gap: 0.5rem;
     cursor: pointer;
     transition: var(--transition-smooth);
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     font-family: var(--font-body);
 }
 
@@ -744,56 +732,67 @@ section {
 }
 
 .project-card:hover .project-btn {
-    color: var(--accent-secondary);
+    color: #ffffff;
 }
 
 .project-card:hover .project-btn::after {
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
 /* 10. Tech Section (Gear) */
 .tech-container {
-    background: radial-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+    background: #080710;
     border: 1px solid var(--card-border);
-    border-radius: 32px;
-    padding: 4rem;
-    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 3.5rem 3rem;
 }
 
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
 }
 
 .tech-item {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 18px;
+    padding: 1.75rem 1.25rem;
     transition: var(--transition-smooth);
     cursor: pointer;
     position: relative;
 }
 
 .tech-item:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.03);
-    border-color: var(--card-border);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.035);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .tech-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.25rem;
-    display: block;
+    width: 44px;
+    height: 44px;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c084fc;
+    margin: 0 auto 1rem auto;
+    transition: var(--transition-smooth);
+}
+
+.tech-item:hover .tech-icon {
+    background: rgba(168, 85, 247, 0.18);
+    color: #ffffff;
 }
 
 .tech-name {
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: #ffffff;
 }
@@ -801,7 +800,7 @@ section {
 .tech-desc {
     font-size: 0.8rem;
     color: var(--text-secondary);
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
 
 /* Tech Spec Popover / Toast */
@@ -809,21 +808,19 @@ section {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: rgba(13, 12, 21, 0.9);
-    border: 1px solid var(--accent-primary);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+    background: #0e0d16;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     border-radius: 16px;
-    padding: 1.25rem 2rem;
+    padding: 1.25rem 1.75rem;
     z-index: 200;
     max-width: 380px;
     display: flex;
     gap: 1rem;
     align-items: center;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     transform: translateY(150%);
     opacity: 0;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
 .tech-toast.active {
@@ -832,7 +829,10 @@ section {
 }
 
 .tech-toast-icon {
-    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d8b4fe;
 }
 
 .tech-toast-title {
@@ -970,43 +970,43 @@ textarea.form-input {
 }
 
 .contact-card {
-    background: rgba(255, 255, 255, 0.01);
+    background: #0b0914;
     border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: 2.2rem;
+    border-radius: 20px;
+    padding: 1.8rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 0.6rem;
     text-decoration: none;
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
 }
 
-.contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
-    pointer-events: none;
-}
-
 .contact-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(168, 85, 247, 0.25);
-    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.025);
 }
 
 .contact-icon {
-    font-size: 2rem;
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
+    width: 42px;
+    height: 42px;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c084fc;
+    margin-bottom: 0.4rem;
+    transition: var(--transition-smooth);
+}
+
+.contact-card:hover .contact-icon {
+    background: rgba(168, 85, 247, 0.18);
+    color: #ffffff;
 }
 
 .contact-label {

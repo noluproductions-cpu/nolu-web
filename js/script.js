@@ -58,37 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(element);
     });
 
-    // 4. 3D Parallax Tilt Effect for Cards
-    const tiltCards = document.querySelectorAll('.glass-card-tilt');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Calculate tilt angle (-6 to 6 degrees)
-            const rotateX = ((centerY - y) / centerY) * 6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-            card.style.boxShadow = `0 30px 60px rgba(99, 102, 241, 0.1), 0 0 20px rgba(255, 255, 255, 0.05)`;
-        });
+    // 4. Subtle Card Hover Elevate (handled via CSS smooth transitions)
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            card.style.boxShadow = '';
-        });
-    });
-
-    // 5. Interactive Canvas Particles Background for Hero
+    // 5. Clean Ambient Canvas Particles Background for Hero
     const canvas = document.getElementById('particle-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let mouse = { x: null, y: null, radius: 140 };
 
         const resizeCanvas = () => {
             canvas.width = canvas.parentElement.offsetWidth;
@@ -97,89 +73,36 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
-
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 1; // Slightly larger for play buttons
-                this.speedX = Math.random() * 0.3 - 0.15;
-                this.speedY = Math.random() * 0.3 - 0.15;
-                this.baseAlpha = Math.random() * 0.25 + 0.1;
-                this.alpha = this.baseAlpha;
-                this.isTriangle = Math.random() < 0.25; // 25% of particles are mini play button triangles!
-                this.angle = Math.random() * Math.PI * 2; // Initial rotation angle
-                this.rotationSpeed = (Math.random() * 0.015 - 0.0075); // Slow rotation
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 0.2 - 0.1;
+                this.speedY = Math.random() * 0.2 - 0.1;
+                this.alpha = Math.random() * 0.15 + 0.05;
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                this.angle += this.rotationSpeed;
 
-                // Bounce off boundaries
-                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-
-                // Mouse interaction (push away)
-                if (mouse.x && mouse.y) {
-                    const dx = this.x - mouse.x;
-                    const dy = this.y - mouse.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < mouse.radius) {
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        const directionX = dx / distance;
-                        const directionY = dy / distance;
-                        this.x += directionX * force * 1.8;
-                        this.y += directionY * force * 1.8;
-                        this.alpha = Math.min(0.8, this.baseAlpha + force * 0.4);
-                    } else {
-                        if (this.alpha > this.baseAlpha) this.alpha -= 0.005;
-                    }
-                } else {
-                    if (this.alpha > this.baseAlpha) this.alpha -= 0.005;
-                }
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
             }
 
             draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                
-                if (this.isTriangle) {
-                    // Draw a neon pink-purple play button triangle
-                    ctx.rotate(this.angle);
-                    ctx.fillStyle = `rgba(217, 70, 239, ${this.alpha})`; // Neon magenta
-                    ctx.beginPath();
-                    const r = this.size * 2.2;
-                    ctx.moveTo(r, 0);
-                    ctx.lineTo(-r/2, -r * Math.sqrt(3)/2);
-                    ctx.lineTo(-r/2, r * Math.sqrt(3)/2);
-                    ctx.closePath();
-                    ctx.fill();
-                } else {
-                    // Draw a neon violet circle
-                    ctx.fillStyle = `rgba(139, 92, 246, ${this.alpha})`; // Electric indigo
-                    ctx.beginPath();
-                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                ctx.restore();
+                ctx.fillStyle = `rgba(168, 85, 247, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
         const initParticles = () => {
-            const count = Math.min(65, Math.floor((canvas.width * canvas.height) / 16000));
+            const count = Math.min(40, Math.floor((canvas.width * canvas.height) / 25000));
             particles = [];
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
@@ -194,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.update();
                 p.draw();
             });
-
-            // Draw connection lines colored in signature neon purple-magenta gradients
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
+            requestAnimationFrame(animate);
+        };
+        animate();
+    }
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
@@ -362,28 +285,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Tech Gear Spec Toast System
     const techSpecs = {
         'Canon EOS RP': {
-            icon: '📷',
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path><circle cx="12" cy="13" r="3"></circle></svg>`,
             title: 'Canon EOS RP',
             desc: '26.2 MP Full-Frame bezzrcadlovka. Používáme ji s prémiovými objektivy pro cinematic hloubku ostrosti, vynikající výkon za špatného světla a čistý výstup.'
         },
         'DJI RS4': {
-            icon: '🎬',
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`,
             title: 'DJI RS4 Stabilizátor',
             desc: 'Nejnovější tříosý stabilizátor řady DJI. Umožňuje nám natáčet extrémně dynamické akční záběry, běhy a plynulé průlety s plnou kontrolou ostření.'
         },
         'DJI MIC 2': {
-            icon: '🎙️',
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>`,
             title: 'DJI MIC 2 (Bezdrátový zvuk)',
             desc: 'Špičkové mikrofony se záznamem do 32-bit float a aktivním potlačením okolního hluku. Zajišťují dokonale čistý zvuk rozhovorů i ve větrném venkovním prostředí.'
         },
         'iPhone 16 & Pro': {
-            icon: '📱',
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>`,
             title: 'iPhone 16 & Pro',
             desc: 'Vybavení pro ultra-rychlý střih a natáčení ve 4K/120fps. Nepostradatelný nástroj pro okamžitou tvorbu Reels a trendů přímo na místě činu.'
         },
         'RGB Světla': {
-            icon: '💡',
-            title: 'Kreativní RGB Osvětlení',
+            icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg>`,
+            title: 'Kreativní RGB Osvěltení',
             desc: 'Přenosná i studiová LED světla s plným spektrem barev. Pomáhají nám okamžitě přetvořit nudný interiér v atraktivní, barevně nasvícenou scénu.'
         }
     };
@@ -402,14 +325,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (toastTimeout) clearTimeout(toastTimeout);
 
             // Populate Toast
-            document.getElementById('toast-icon').textContent = spec.icon;
+            document.getElementById('toast-icon').innerHTML = spec.icon;
             document.getElementById('toast-title').textContent = spec.title;
             document.getElementById('toast-body').textContent = spec.desc;
 
             // Activate Toast
             toast.classList.add('active');
 
-            // Deactivate after 5 seconds
+            // Deactivate after 5.5 seconds
             toastTimeout = setTimeout(() => {
                 toast.classList.remove('active');
             }, 5500);
