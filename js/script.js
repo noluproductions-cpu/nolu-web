@@ -210,12 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('modal-stat-dur').textContent = data.duration;
         document.getElementById('modal-stat-team').textContent = data.team;
         document.getElementById('modal-stat-role').textContent = data.role;
-        
-        document.getElementById('modal-stat-met1').textContent = data.stats.metric1;
-        document.getElementById('modal-stat-val1').textContent = data.stats.val1;
-        document.getElementById('modal-stat-met2').textContent = data.stats.metric2;
-        document.getElementById('modal-stat-val2').textContent = data.stats.val2;
-
         document.getElementById('modal-desc').textContent = data.desc;
         
         // Populate deliverables bullet list
@@ -226,12 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = bullet;
             bulletsContainer.appendChild(li);
         });
-
-        // Set global modal visual showcase title
-        const visualTitle = document.querySelector('.modal-visual-showcase .modal-section-title');
-        if (visualTitle) {
-            visualTitle.textContent = 'Klíčové výsledky';
-        }
 
         // Show modal
         modal.classList.add('active');
