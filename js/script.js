@@ -41,22 +41,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Scroll Reveal System using Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Once it is revealed, we don't need to observe it anymore
-                observer.unobserve(entry.target);
-            }
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.02,
+            rootMargin: '100px 0px 100px 0px'
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
 
-    revealElements.forEach(element => {
-        revealObserver.observe(element);
-    });
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+    } else {
+        revealElements.forEach(element => {
+            element.classList.add('active');
+        });
+    }
 
     // 4. Subtle Card Hover Elevate (handled via CSS smooth transitions)
 
@@ -117,26 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 p.update();
                 p.draw();
             });
-            requestAnimationFrame(animate);
-        };
-        animate();
-    }
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 110) {
-                        const alpha = (110 - dist) / 110 * 0.1;
-                        ctx.strokeStyle = `rgba(217, 70, 239, ${alpha})`; // Magenta/Pink link
-                        ctx.lineWidth = 0.4;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
             requestAnimationFrame(animate);
         };
         animate();
