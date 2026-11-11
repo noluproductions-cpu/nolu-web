@@ -31,9 +31,98 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- External CSS stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=4.3">
+    <link rel="stylesheet" href="css/style.css?v=4.4">
     <!-- External JS script -->
-    <script src="js/script.js?v=4.3" defer></script>
+    <script src="js/script.js?v=4.4" defer></script>
+    <!-- Structured Data / Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://www.noluproductions.cz/#business",
+          "name": "NOLU Productions",
+          "alternateName": "NOLU Productions s.r.o.",
+          "description": "Tvoříme moderní obsah, který propojuje značky s lidmi. Reels, video produkce, správa sociálních sítí, branding a marketing pro firmy.",
+          "url": "https://www.noluproductions.cz",
+          "logo": "https://www.noluproductions.cz/logo.png",
+          "image": "https://www.noluproductions.cz/logo.png",
+          "email": "info@noluproductions.cz",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Plzeň",
+            "addressCountry": "CZ"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Česká republika"
+          },
+          "sameAs": [
+            "https://www.instagram.com/noluproductions",
+            "https://www.facebook.com/noluproductions"
+          ],
+          "priceRange": "$$",
+          "currenciesAccepted": "CZK",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Služby NOLU Productions",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Video produkce",
+                  "description": "Profesionální video produkce pro firmy, maturitní plesy a události."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Správa sociálních sítí",
+                  "description": "Kompletní správa a tvorba obsahu pro Instagram, Facebook a TikTok."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Reels a krátká videa",
+                  "description": "Tvorba virálních Reels a krátkých videí pro sociální sítě."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Branding a grafika",
+                  "description": "Vytváření vizuální identity a grafických materiálů pro firmy."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.noluproductions.cz/#website",
+          "url": "https://www.noluproductions.cz",
+          "name": "NOLU Productions",
+          "description": "Studio vizuální tvorby a produkce — video, sociální sítě, branding.",
+          "inLanguage": "cs",
+          "publisher": {
+            "@id": "https://www.noluproductions.cz/#business"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
